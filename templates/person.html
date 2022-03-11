@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ defaultName.fullname | e }} - Person Archive</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+        integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="main">
+        <h1>
+            {{ defaultName.fullname | e }}
+            {% if name.en is defined and name.en.fullname is defined %}
+            <small>{{name.en.fullname}}</small>
+            {% endif %}
+        </h1>
+    </div>
+
+    <nav>
+        <div>
+            {% if image is defined %}
+            <img src="{{image.url}}" alt="{{defaultName.fullname}}" />
+            {% if image.info is defined %}
+            <small>{{image.info | e}}</small>
+            {% endif %}
+            {% endif %}
+        </div>
+        <div>
+            <h2>Info</h2>
+            <dl>
+                <dt>Type</dt>
+                <dd>{{ type | e }}</dd>
+                {% if info.birthday is defined and info.birthday.month is defined and info.birthday.day is defined %}
+                <dt>Birthday</dt>
+                <dd>{% if info.birthday.year is defined %}{{info.birthday.year}}/{% endif %}{{ info.birthday.month | e
+                    }}/{{ info.birthday.day | e }}</dd>
+                {% endif %}
+                {% if info.startday is defined and info.startday.month is defined and info.startday.day is defined %}
+                <dt>Begin Activity</dt>
+                <dd>{% if info.startday.year is defined %}{{info.startday.year}}/{% endif %}{{ info.startday.month | e
+                    }}/{{ info.startday.day | e }}</dd>
+                {% endif %}
+                {% if info.endday is defined and info.endday.month is defined and info.endday.day is defined %}
+                <dt>End Activity</dt>
+                <dd>{% if info.endday.year is defined %}{{info.endday.year}}/{% endif %}{{ info.endday.month | e
+                    }}/{{ info.endday.day | e }}</dd>
+                {% endif %}
+            </dl>
+        </div>
+        <div>
+            <h2>Links</h2>
+            <ul>
+                {% for i in links %}
+                <li><a href="{{ i.url }}">{{ i.name | e }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </nav>
+
+</body>
+
+</html>
