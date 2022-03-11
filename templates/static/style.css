@@ -1,10 +1,8 @@
 #main {
-    width: calc(100vw - 260px);
+    width: calc(100vw - 280px);
+    padding: 5px 15px;
 }
 
-h1 {
-    margin-left: 10px;
-}
 
 h1>small {
     font-size: 15pt;
