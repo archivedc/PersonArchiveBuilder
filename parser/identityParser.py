@@ -32,16 +32,16 @@ def parse(s, v):
         }
     elif s == 'twitter':
         for i in v:
+            twitter_linkobj = {
+                'name': 'Twitter',
+            }
+            if 'username' in i:
+                twitter_linkobj['name'] = f"Twitter (@{i['username']})"
+                twitter_linkobj['url'] = 'https://twitter.com/' + i['username']
             if 'id' in i:
-                toret.append({
-                    'name': 'Twitter',
-                    'url': 'https://twitter.com/i/user/' + str(i['id'])
-                })
-            elif 'username' in i:
-                toret.append({
-                    'name': 'Twitter',
-                    'url': 'https://twitter.com/' + i['username']
-                })
+                twitter_linkobj['url'] = 'https://twitter.com/i/user/' + \
+                    str(i['id'])
+            toret.append(twitter_linkobj)
         return toret
     elif s == 'youtube':
         for i in v:
