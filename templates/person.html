@@ -20,7 +20,14 @@
 <body>
     <div id="main">
         <h1>
-            {{ defaultName.fullname | e }}
+            <ruby>
+                {{ defaultName.fullname | e }}
+                {% if defaultName.fullname %}
+                <rp>(</rp>
+                <rt>{{ defaultName.ruby | e }}</rt>
+                <rp>)</rp>
+                {% endif %}
+            </ruby>
             {% if name.en is defined and name.en.fullname is defined %}
             <small>{{name.en.fullname}}</small>
             {% endif %}
