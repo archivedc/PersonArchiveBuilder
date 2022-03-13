@@ -25,6 +25,28 @@ h1>small {
     padding-right: 15px;
 }
 
+#archives ul {
+    width: 100%;
+    border: 1px solid lightgray;
+    padding: 0;
+}
+
+#archives ul li {
+    display: inline-block;
+    width: 100%;
+    list-style: none;
+    margin: 0 2px;
+    padding: 2px 0;
+}
+
+#archives ul li:nth-child(2n) {
+    background-color: #EEE;
+}
+
+#archives ul li .comment {
+    margin-left: 10px;
+    color: gray;
+}
 
 nav {
     position: fixed;

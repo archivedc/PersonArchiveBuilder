@@ -32,6 +32,26 @@
             <small>{{name.en.fullname}}</small>
             {% endif %}
         </h1>
+        {% if archives is defined %}
+        <div id="archives">
+            <ul>
+                {% for archive in archives %}
+                <li>
+                    <a {% if archive.url is defined %}href="{{ archive.url }}" {% endif %}>
+                        {{ archive.type }}
+                        {% if archive.restricted %}
+                        <span class="restricted">(Restricted Access)</span>
+                        {% endif %}
+                    </a>
+                    {% if archive.comment is defined %}
+                    <br />
+                    <span class="comment">{{ archive.comment | e }}</span>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
     </div>
 
     <nav>
