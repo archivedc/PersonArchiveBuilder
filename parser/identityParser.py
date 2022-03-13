@@ -66,3 +66,10 @@ def parse(s, v):
             'name': 'MusicBrainz',
             'url': 'https://musicbrainz.org/artist/' + v
         }
+    elif s == 'instagram':
+        for i in v:
+            toret.append({
+                'name': f"Instagram ({i['username']})",
+                'url': 'https://www.instagram.com/' + i['username']
+            })
+        return toret
